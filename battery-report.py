@@ -11,7 +11,8 @@ if battery.power_plugged:
     print("Laptop is charging right now. \n")
 else:
     print("Laptop is not plugged in right now. \n")
+    print("Battery time left : ", timec(battery.secsleft))
 
-print("Battery time left : ", timec(battery.secsleft))
+
 
 
