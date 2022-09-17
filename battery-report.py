@@ -42,12 +42,14 @@ if rprt2 in accept:
     SaveFile.write(f"\n \nBattery percentage : {battery.percent} \n")
     if battery.power_plugged:
         SaveFile.write("Laptop is charging right now. \n")
+        SaveFile.write("---------------------------------- \n")
     else:
         SaveFile.write("Laptop is not plugged in right now. \n")
         SaveFile.write(f"Battery time left : {timec(battery.secsleft)} \n")
         SaveFile.write("---------------------------------- \n")
     SaveFile.close()
-    print("Info was saved in ChargeStats.txt file.")
+if rprt in accept:
+    os.system("battery-report.html")
 
 print("Process is finished.")
     
