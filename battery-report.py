@@ -1,7 +1,16 @@
-
 import os
-import psutil
+try:
+    import psutil
+except:
+    os.system("pip install psutil")
+    import psutil
+from datetime import datetime
 
+
+os.system("cls")
+
+
+print(datetime.now())
 
 def timec(secs):
     mins, secs = divmod(secs, 60)
@@ -9,7 +18,7 @@ def timec(secs):
     return "%d:%02d:%02d" % (hrs, mins, secs)
 
 battery = psutil.sensors_battery()
-print("Battery percentage : ", battery.percent, "\n")
+print("\n \nBattery percentage : ", battery.percent, "\n")
 
 if battery.power_plugged:
     print("Laptop is charging right now. \n")
@@ -18,14 +27,29 @@ else:
     print("Battery time left : ", timec(battery.secsleft))
 
 print("---------------------------------- \n")
-
+accept = ['y', 'yes', 'Yes']
 rprt = input("Would you like to create a detailed battery report? (y/yes) to accept: ")
 
-accept = ['y', 'yes', 'Yes']
+
 
 if rprt in accept:
-    os.system("powercfg /batteryreport")
+   os.system("powercfg /batteryreport")
+
+rprt2 = input("would you like to log this info in a txt file? (y/yes) to accept: ")
+if rprt2 in accept:
+    SaveFile = open("ChargeStats.txt", "a")
+    SaveFile.write(f"{datetime.now()}")
+    SaveFile.write(f"\n \nBattery percentage : {battery.percent} \n")
+    if battery.power_plugged:
+        SaveFile.write("Laptop is charging right now. \n")
+    else:
+        SaveFile.write("Laptop is not plugged in right now. \n")
+        SaveFile.write(f"Battery time left : {timec(battery.secsleft)} \n")
+        SaveFile.write("---------------------------------- \n")
+    SaveFile.close()
+
+print("Process is finished.")
     
 
 
-
+    
