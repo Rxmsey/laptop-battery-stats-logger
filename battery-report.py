@@ -47,6 +47,7 @@ if rprt2 in accept:
         SaveFile.write(f"Battery time left : {timec(battery.secsleft)} \n")
         SaveFile.write("---------------------------------- \n")
     SaveFile.close()
+    print("Info was saved in ChargeStats.txt file.")
 
 print("Process is finished.")
     
