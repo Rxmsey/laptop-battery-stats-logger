@@ -51,7 +51,7 @@ if rprt2 in accept:
 if rprt in accept:
     os.system("battery-report.html")
 
-print("Process is finished.")
+print("Process is finished!")
     
 
 
